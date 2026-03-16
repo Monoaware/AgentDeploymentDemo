@@ -5,6 +5,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.tools import tool
 from dotenv import load_dotenv
 from langgraph.prebuilt import create_react_agent
+from app.get_content_ideas import get_content_ideas
 
 load_dotenv()
 
@@ -26,6 +27,6 @@ Use your tools when the user asks about trends or platform-specific content."""
 
 agent = create_react_agent(
     model=llm,
-    tools=[get_trending_topics],
+    tools=[get_trending_topics, get_content_ideas],
     prompt=system_prompt
 )
