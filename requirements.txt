@@ -1,0 +1,13 @@
+# Python dependencies. These are everything that the application needs installed before it can run.
+
+fastapi
+uvicorn[standard]
+langchain-core
+langchain-community
+langchain-google-genai
+langchain-text-splitters
+langgraph
+langsmith
+chromadb
+pypdf
+python-dotenv

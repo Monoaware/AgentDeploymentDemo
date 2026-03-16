@@ -1,0 +1,4 @@
+# Should always include .env.
+.env
+__pychache__
+*.pyc
