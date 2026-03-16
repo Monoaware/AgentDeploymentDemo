@@ -15,6 +15,15 @@ app = FastAPI(
     version="1.0.0"
 )
 
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 class ChatRequest(BaseModel):
     message: str
 
@@ -34,3 +43,6 @@ async def chat(request: ChatRequest):
         return ChatResponse(response=result["messages"][-1].content)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+    
+from fastapi.staticfiles import StaticFiles
+app.mount("/ui", StaticFiles(directory="static", html=True), name="static")
